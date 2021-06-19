@@ -1,5 +1,7 @@
 $( document ).ready(onReady);
 
+let totalMonthlySalary = 0;
+
 function onReady(){
     $("#submitButton").on("click", createRecord);
     $(document).on("click", '.delete', function(){
@@ -30,6 +32,7 @@ function createRecord(){
             <td class="delete"><button type="button" class="btn btn-danger" id="delete${employeeID}">Delete</button></td>
         </tr>`
         )
+    adjustMonthly(annualSalary);
     clearInputs();
 } // using employee ID for delete ID as value should be unique
 
@@ -41,8 +44,11 @@ function clearInputs(){
     $("#annualSalaryIn").val('');
 }
 
-// adjust monthly cost on button click 
-
+// adjust monthly cost 
+function adjustMonthly(salaryValue){
+    totalMonthlySalary += parseInt(salaryValue);
+    $("#totalMonthly").text(`$${totalMonthlySalary}`);
+}
 
 // add function to delete user 
 
