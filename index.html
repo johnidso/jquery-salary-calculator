@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="style.css">
     <script src="jquery.js" charset="utf-8"></script>
     <script src="script.js" charset="utf-8"></script>
     <title>Salary Calculator</title>
@@ -14,22 +14,34 @@
     <header>
         <h1>Salary Calculator</h1>
     </header>
-    <section id="employeeInputs">
-        <h2>Add Employee</h2>
-        <input placeholder="first name" id="firstNameIn">
-        <input placeholder="last name" id="lastNameIn">
-        <input placeholder="ID" id="idIn">
-        <input placeholder="title" id="titleIn">
-        <input placeholder="annual salary" id="annualSalaryIn">
-        <button id="submitButton">Submit</button>
-    <section id="employeeDisplay">
-        <h2>Employees</h2>
-        <table class="table">
-            <thead>
-                <th></th>
-            </thead>
-        </table>
-    </section>
+    <section class="container-fluid">
+        <section id="employeeInputs">
+            <h2>Add Employee</h2>
+            <input class="col" placeholder="first name" id="firstNameIn">
+            <input class="col" placeholder="last name" id="lastNameIn">
+            <input class="col" placeholder="ID" id="idIn">
+            <input class="col" placeholder="title" id="titleIn">
+            <input class="col" placeholder="annual salary" id="annualSalaryIn">
+            <button id="submitButton">Submit</button>
+        </section>
+        <section id="employeeDisplay">
+            <h2>Employees</h2>
+            <table class="table">
+                <thead>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Annual Salary</th>
+                    <th scope="col"> </th>
+                </thead>
+                <tbody id="tableRows">
+                    <!--
+                        <tr></tr>
+                    -->
+                </tbody>
+            </table>
+        </section>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
