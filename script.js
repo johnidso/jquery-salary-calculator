@@ -48,6 +48,9 @@ function clearInputs(){
 function adjustMonthly(salaryValue){
     totalMonthlySalary += parseInt(salaryValue);
     $("#totalMonthly").text(`$${totalMonthlySalary}`);
+    if(totalMonthlySalary > 20000){
+        $("#totalMonthly").addClass('bg-danger')
+    }
 }
 
 // add function to delete user 
