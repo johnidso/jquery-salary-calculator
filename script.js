@@ -11,7 +11,7 @@ function onReady(){
         totalMonthlySalary -= $(this).closest('tr').data( "salary" );
         setMonthly(totalMonthlySalary);
         $(this).closest('tr').remove();
-        if(totalMonthlySalary < 20000){
+        if(totalMonthlySalary <= 20000){
             $("#totalMonthly").addClass('bg-white');
         }
     })
