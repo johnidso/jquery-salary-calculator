@@ -35,7 +35,7 @@ function createRecord(){
     } else {
         console.log(annualSalary);
         $("#tableRows").append(
-            `<tr id="row${employeeID}">
+            `<tr id="row${employeeID}">   
                 <td>${firstName}</td>
                 <td>${lastName}</td>
                 <td>${employeeID}</td>
@@ -43,12 +43,12 @@ function createRecord(){
                 <td class="salary">${annualSalary}</td>
                 <td class="delete"><button type="button" class="btn btn-danger" id="${employeeID}Delete">Delete Record</button></td>
             </tr>`
-            )
+            ) // *** For the purposes of this assignment I am assuming that employee IDs are UNIQUE ***
         $(`#row${employeeID}`).data("salary", annualSalary); // assign salary amount into table row metadata
         adjustMonthly(annualSalary);
         clearInputs();
     }
-} // using employee ID for delete ID as value should be unique
+} 
 
 function clearInputs(){
     $("#firstNameIn").val('');
