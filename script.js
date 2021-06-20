@@ -7,9 +7,11 @@ function onReady(){
     $(document).on("click", '.delete', function(){
         console.log($(this).closest('tr').data( "salary" ));
         totalMonthlySalary -= $(this).closest('tr').data( "salary" );
-
         setMonthly(totalMonthlySalary);
         $(this).closest('tr').remove();
+        if(totalMonthlySalary < 20000){
+            $("#totalMonthly").addClass('bg-white')
+        }
     })
 }
 
@@ -26,20 +28,24 @@ function createRecord(){
     let employeeID = $("#idIn").val();
     let employeeTitle = $("#titleIn").val();
     let annualSalary = $("#annualSalaryIn").val();
-    console.log(annualSalary);
-    $("#tableRows").append(
-        `<tr id="row${employeeID}">
-            <td>${firstName}</td>
-            <td>${lastName}</td>
-            <td>${employeeID}</td>
-            <td>${employeeTitle}</td>
-            <td class="salary">${annualSalary}</td>
-            <td class="delete"><button type="button" class="btn btn-danger" id="${employeeID}Delete">Delete</button></td>
-        </tr>`
-        )
-    $(`#row${employeeID}`).data("salary", annualSalary); // assign salary amount into button metadata
-    adjustMonthly(annualSalary);
-    clearInputs();
+    if(!firstName || !lastName || !employeeID || !employeeTitle || !annualSalary){
+        alert("Please fill all employee input cells.");
+    } else {
+        console.log(annualSalary);
+        $("#tableRows").append(
+            `<tr id="row${employeeID}">
+                <td>${firstName}</td>
+                <td>${lastName}</td>
+                <td>${employeeID}</td>
+                <td>${employeeTitle}</td>
+                <td class="salary">${annualSalary}</td>
+                <td class="delete"><button type="button" class="btn btn-danger" id="${employeeID}Delete">Delete Record</button></td>
+            </tr>`
+            )
+        $(`#row${employeeID}`).data("salary", annualSalary); // assign salary amount into button metadata
+        adjustMonthly(annualSalary);
+        clearInputs();
+    }
 } // using employee ID for delete ID as value should be unique
 
 function clearInputs(){

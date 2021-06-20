@@ -10,14 +10,6 @@ h2 {
     padding-bottom: 12px;
 }
 
-#employeeInputs {
-    padding: 1.5%;
-}
-
-#employeeDisplay {
-    padding: 1.5%;
-}
-
 aside {
     padding: 1.5%;
     text-align:right;
@@ -25,9 +17,17 @@ aside {
 }
 
 .col {
-    padding:.5%;
+    padding: .5%;
 }
 
 button {
     padding: .5%;
+}
+
+#employeeInputs {
+    padding: 1.5%;
+}
+
+#employeeDisplay {
+    padding: 1.5%;
 }
