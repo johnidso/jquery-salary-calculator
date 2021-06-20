@@ -12,6 +12,7 @@ function onReady(){
         setMonthly(totalMonthlySalary);
         $(this).closest('tr').remove();
         if(totalMonthlySalary <= 20000){
+            $("#totalMonthly").removeClass();
             $("#totalMonthly").addClass('bg-white');
         }
     })
@@ -63,6 +64,7 @@ function adjustMonthly(salaryValue){
     totalMonthlySalary += parseInt(salaryValue);
     $("#totalMonthly").text(`$${totalMonthlySalary}`);
     if(totalMonthlySalary > 20000){
+        $("#totalMonthly").removeClass();
         $("#totalMonthly").addClass('bg-danger')
     }
 }
