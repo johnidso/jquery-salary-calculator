@@ -3,14 +3,16 @@ $( document ).ready(onReady);
 let totalMonthlySalary = 0;
 
 function onReady(){
+    // listener that creates records on input submission
     $("#submitButton").on("click", createRecord);
-    $(document).on("click", '.delete', function(){
+    // listener that removes record, adjusts total monthly, and reassesses the totalmonthly background.
+    $(document).on("click", '.delete', function(){  
         console.log($(this).closest('tr').data( "salary" ));
         totalMonthlySalary -= $(this).closest('tr').data( "salary" );
         setMonthly(totalMonthlySalary);
         $(this).closest('tr').remove();
         if(totalMonthlySalary < 20000){
-            $("#totalMonthly").addClass('bg-white')
+            $("#totalMonthly").addClass('bg-white');
         }
     })
 }
@@ -28,7 +30,7 @@ function createRecord(){
     let employeeID = $("#idIn").val();
     let employeeTitle = $("#titleIn").val();
     let annualSalary = $("#annualSalaryIn").val();
-    if(!firstName || !lastName || !employeeID || !employeeTitle || !annualSalary){
+    if(!firstName || !lastName || !employeeID || !employeeTitle || !annualSalary){   // throw error if user does not include all inputs
         alert("Please fill all employee input cells.");
     } else {
         console.log(annualSalary);
@@ -42,7 +44,7 @@ function createRecord(){
                 <td class="delete"><button type="button" class="btn btn-danger" id="${employeeID}Delete">Delete Record</button></td>
             </tr>`
             )
-        $(`#row${employeeID}`).data("salary", annualSalary); // assign salary amount into button metadata
+        $(`#row${employeeID}`).data("salary", annualSalary); // assign salary amount into table row metadata
         adjustMonthly(annualSalary);
         clearInputs();
     }
@@ -56,7 +58,7 @@ function clearInputs(){
     $("#annualSalaryIn").val('');
 }
 
-// adjust monthly cost 
+// adjust monthly cost only if EXCEEDS (>) $20,000
 function adjustMonthly(salaryValue){
     totalMonthlySalary += parseInt(salaryValue);
     $("#totalMonthly").text(`$${totalMonthlySalary}`);
@@ -65,8 +67,7 @@ function adjustMonthly(salaryValue){
     }
 }
 
-// handle removing monthly cost 
-
+// set monthly cost element to current totalMonthlySalary value 
 function setMonthly(totalMonthlySalary){
     $("#totalMonthly").text(`$${totalMonthlySalary}`);
 }
