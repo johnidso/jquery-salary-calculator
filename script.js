@@ -3,6 +3,7 @@ $( document ).ready(onReady);
 let totalMonthlySalary = 0;
 
 function onReady(){
+    setMonthly(totalMonthlySalary);
     // listener that creates records on input submission
     $("#submitButton").on("click", createRecord);
     // listener that removes record, adjusts total monthly, and reassesses the totalmonthly background.
@@ -41,7 +42,7 @@ function createRecord(){
                 <td>${lastName}</td>
                 <td>${employeeID}</td>
                 <td>${employeeTitle}</td>
-                <td class="salary">${annualSalary}</td>
+                <td class="salary">$${annualSalary}</td>
                 <td class="delete"><button type="button" class="btn btn-danger" id="${employeeID}Delete">Delete Record</button></td>
             </tr>`
             ) // *** For the purposes of this assignment I am assuming that employee IDs are UNIQUE ***
