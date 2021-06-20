@@ -5,10 +5,11 @@ let totalMonthlySalary = 0;
 function onReady(){
     $("#submitButton").on("click", createRecord);
     $(document).on("click", '.delete', function(){
-        $(this).closest('tr').remove();
-        totalMonthlySalary -= $(this).data();
-        console.log($(this).data());
+        console.log($(this).closest('tr').data( "salary" ));
+        totalMonthlySalary -= $(this).closest('tr').data( "salary" );
+
         setMonthly(totalMonthlySalary);
+        $(this).closest('tr').remove();
     })
 }
 
@@ -25,6 +26,7 @@ function createRecord(){
     let employeeID = $("#idIn").val();
     let employeeTitle = $("#titleIn").val();
     let annualSalary = $("#annualSalaryIn").val();
+    console.log(annualSalary);
     $("#tableRows").append(
         `<tr id="row${employeeID}">
             <td>${firstName}</td>
@@ -32,10 +34,10 @@ function createRecord(){
             <td>${employeeID}</td>
             <td>${employeeTitle}</td>
             <td class="salary">${annualSalary}</td>
-            <td class="delete"><button type="button" class="btn btn-danger" id="delete${employeeID}">Delete</button></td>
+            <td class="delete"><button type="button" class="btn btn-danger" id="${employeeID}Delete">Delete</button></td>
         </tr>`
         )
-    $(`#delete${employeeID}`).data(annualSalary);
+    $(`#row${employeeID}`).data("salary", annualSalary); // assign salary amount into button metadata
     adjustMonthly(annualSalary);
     clearInputs();
 } // using employee ID for delete ID as value should be unique
