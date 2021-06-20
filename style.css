@@ -5,13 +5,23 @@ header {
     padding: 2%;
 }
 
+h2 {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
 #employeeInputs {
     padding: 1.5%;
-    justify-content: space-evenly;
 }
 
 #employeeDisplay {
     padding: 1.5%;
+}
+
+aside {
+    padding: 1.5%;
+    text-align:right;
+    margin-right:24%;
 }
 
 .col {

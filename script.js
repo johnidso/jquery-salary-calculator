@@ -6,6 +6,9 @@ function onReady(){
     $("#submitButton").on("click", createRecord);
     $(document).on("click", '.delete', function(){
         $(this).closest('tr').remove();
+        totalMonthlySalary -= $(this).data();
+        console.log($(this).data());
+        setMonthly(totalMonthlySalary);
     })
 }
 
@@ -28,10 +31,11 @@ function createRecord(){
             <td>${lastName}</td>
             <td>${employeeID}</td>
             <td>${employeeTitle}</td>
-            <td>${annualSalary}</td>
+            <td class="salary">${annualSalary}</td>
             <td class="delete"><button type="button" class="btn btn-danger" id="delete${employeeID}">Delete</button></td>
         </tr>`
         )
+    $(`#delete${employeeID}`).data(annualSalary);
     adjustMonthly(annualSalary);
     clearInputs();
 } // using employee ID for delete ID as value should be unique
@@ -53,9 +57,11 @@ function adjustMonthly(salaryValue){
     }
 }
 
-// add function to delete user 
+// handle removing monthly cost 
 
-// handle total monthly cost > $20,000 (.addClass Danger)
+function setMonthly(totalMonthlySalary){
+    $("#totalMonthly").text(`$${totalMonthlySalary}`);
+}
 
 
 
