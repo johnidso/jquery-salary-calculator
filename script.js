@@ -34,6 +34,8 @@ function createRecord(){
     let annualSalary = $("#annualSalaryIn").val();
     if(!firstName || !lastName || !employeeID || !employeeTitle || !annualSalary){   // throw error if user does not include all inputs
         alert("Please fill all employee input cells.");
+    } else if (!$.isNumeric(employeeID)){
+        alert("Please enter a unique number for Employee ID");
     } else {
         console.log(annualSalary);
         $("#tableRows").append(
